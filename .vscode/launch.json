@@ -1,0 +1,62 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "name": "Attach",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "evenOdd",
+            "request": "launch",
+            "mainClass": "evenOdd",
+            "projectName": "learnbay_8c57fc62"
+        },
+        {
+            "type": "java",
+            "name": "factorial",
+            "request": "launch",
+            "mainClass": "factorial",
+            "projectName": "learnbay_8c57fc62"
+        },
+        {
+            "type": "java",
+            "name": "fibo",
+            "request": "launch",
+            "mainClass": "fibo",
+            "projectName": "learnbay_8c57fc62"
+        },
+        {
+            "type": "java",
+            "name": "hw",
+            "request": "launch",
+            "mainClass": "hw",
+            "projectName": "learnbay_8c57fc62"
+        },
+        {
+            "type": "java",
+            "name": "intro",
+            "request": "launch",
+            "mainClass": "intro",
+            "projectName": "learnbay_8c57fc62"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

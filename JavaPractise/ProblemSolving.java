@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.Scanner;
+// import java.util.Arrays;
+// import java.util.HashSet;
 
 public class ProblemSolving {
     public static void main(String[] args) {
@@ -17,14 +17,21 @@ public class ProblemSolving {
         // removeAllPrime(a1);
         // sc.close();
 
-        int [][] arr2 = {
-                {1,   2,    1,   2,   1},
-                {2,   1,    2,   1,   2},
-                {1,   2,    1,   2,   1},
-                {2,   1,    2,   1,   2},
-                {1,   2,    1,   2,   1},
-            };
-        chessBoard(arr2);
+        // int [][] arr2 = {
+        //         {1,   2,    1,   2,   1},
+        //         {2,   1,    2,   1,   2},
+        //         {1,   2,    1,   2,   1},
+        //         {2,   1,    2,   1,   2},
+        //         {1,   2,    1,   2,   1},
+        //     };
+        // chessBoard(arr2);
+
+        
+        //System.out.println(removeTailingZero("0051309800"));
+
+        // int arr[] = {1,2,3,4};
+        // int arr1 [] = {3,1,2,4};
+        // findThePrefixCommonArray(arr, arr1);
     }
 
     //Q1: Given an arrayList, remove all prime numbers
@@ -94,4 +101,54 @@ public class ProblemSolving {
             return true;
         } else return false;
     }
+
+    // Problem Statement: Given a positive integer num represented as a string, return the integer num without trailing zeros as a string.
+ 
+    //     Input: num = "51230100"
+    //     Output: "512301"
+    //     Explanation: Integer "51230100" has 2 trailing zeros, we remove them and return integer "512301".
+
+    public static String removeTailingZero(String s) {
+        //Below code will remove leading zeros using StringBuilder
+
+        // StringBuilder sb = new StringBuilder(s);
+        // while (sb.length() > 0 && sb.charAt(0) == '0') {
+        //     sb.deleteCharAt(0);
+        // }
+        // return sb.toString();
+
+        //Below code will remove tailing zeros using String Builder
+
+        StringBuilder sb = new StringBuilder(s);
+        while(sb.length() > 0 && sb.charAt(sb.length() - 1) == '0') {
+            sb.deleteCharAt(sb.length()-1);
+        }
+        return sb.toString();
+    }
+
+    // public static void findThePrefixCommonArray(int[] A, int[] B) {
+    //     int[] C = new int[A.length];
+    //     HashSet<Integer> set = new HashSet<>();
+    //     int count = 0;
+    //     for(int i = 0; i < A.length; i++) {
+    //         if (set.contains(A[i])) {
+    //             count++;
+    //             System.out.println("Count after A " + count);
+    //         } else {
+    //             set.add(A[i]);
+    //         }
+    //         if (set.contains(B[i])) {
+    //             count++;
+    //             System.out.println("Count after B " + count);
+    //         } else {
+    //             set.add(B[i]);
+    //         }
+    //         System.out.println("HashMap " + set);
+    //         System.out.println("Count " + count);
+    //         C[i] = count;
+    //         System.out.println("Elements in C " + Arrays.toString(C));
+
+    //     }
+    //     System.out.println(Arrays.toString(C));
+    //}
 }

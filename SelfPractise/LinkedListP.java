@@ -5,10 +5,10 @@ import java.util.HashSet;
 
 // On compiling process, use this command:
 
-// javac -d . [FileName.java]
+// javac -d . [FileName.java] ==> javac -d . LinkedListP.java 
 // To run the class, please use this command:
 
-// java [Package].[ClassName]
+// java [Package].[ClassName] ==> java SelfPractise.LinkedListP 
 
 // >>>>>>>>>>>>>>>>    REMEMBER    <<<<<<<<<<<<<<<<<
 //don't change the head variale
@@ -51,7 +51,7 @@ public class LinkedListP {
             insert(list2,6);
             insert(list2,7);
 
-            display(list);
+            //display(list);
             // display(list1);
             // display(list2);
             // ArrayList <LinkedListP> aList = new ArrayList<LinkedListP>();
@@ -87,9 +87,9 @@ public class LinkedListP {
             //intersectionSortedList(list, list1);
             //mergeKsortedLists(aList);
             //removeKthFromLast(list, 3);
-            rearrangeList(list);
-            
-
+            //rearrangeList(list);
+            Node n = list.head;
+            displayUsingNode(recursiveReverse(n));
 
         }
 
@@ -176,6 +176,17 @@ public class LinkedListP {
             }
             System.out.println();
         }
+
+        public static void displayUsingNode(Node node) {
+            Node temp = node;
+            System.out.print("LinkedList: ");
+            while(temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+        
 
         public static void displayFirst(LinkedListP list) {
             if (list.head == null) {
@@ -291,6 +302,17 @@ public class LinkedListP {
                 list.head = prev;
                 display(list);
             }
+        }
+        public static Node recursiveReverse(Node node) {
+            Node first;
+            if (node==null || node.next == null)
+                return node;
+
+	        first = recursiveReverse(node.next);
+	        node.next.next = node;
+	        node.next = null;
+
+	        return first;
         }
 
         

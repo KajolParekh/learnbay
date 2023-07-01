@@ -26,27 +26,38 @@
 // console.log("Object : ", JSON.stringify(obj));
 
 
-let a1 = [1,2,3]
-let a2 = [5,6,7,8,1]
-let len = Math.max(a1.length,a2.length)
-let finalAns = [];
-let sum = 0;
+// let a1 = [1,2,3]
+// let a2 = [5,6,7,8,1]
+// let len = Math.max(a1.length,a2.length)
+// let finalAns = [];
+// let sum = 0;
 
-let num1=0;
-for(let i=0; i < a1.length;i++) {
-    num1 = num1 * 10 + (a1[i]);
+// let num1=0;
+// for(let i=0; i < a1.length;i++) {
+//     num1 = num1 * 10 + (a1[i]);
+// }
+// let num2=0;
+// for(let i=0; i < a2.length;i++) {
+//     num2 = num2 * 10 + (a2[i]);
+// }
+// console.log("N1: ", num1);
+// console.log("N2: ", num2);
+// sum = num1+num2;
+// console.log("Sum: ", sum);
+// for(let i = 0; i < length; i++) {
+//     let remainder = sum % 10;
+//     finalAns[len-i-1] = Math.abs(remainder);
+//     sum = sum /10;
+// }
+// console.log("finalAns: ", finalAns);
+
+
+function muFunc() {
+    if(true) {
+        let x = 10;
+        console.log(x);
+    }
+    
 }
-let num2=0;
-for(let i=0; i < a2.length;i++) {
-    num2 = num2 * 10 + (a2[i]);
-}
-console.log("N1: ", num1);
-console.log("N2: ", num2);
-sum = num1+num2;
-console.log("Sum: ", sum);
-for(let i = 0; i < length; i++) {
-    let remainder = sum % 10;
-    finalAns[len-i-1] = Math.abs(remainder);
-    sum = sum /10;
-}
-console.log("finalAns: ", finalAns);
+
+muFunc();

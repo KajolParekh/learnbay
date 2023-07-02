@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 // import java.util.Arrays;
 // import java.util.HashSet;
+import java.util.HashMap;
+//import java.util.HashSet;
 
 public class ProblemSolving {
     public static void main(String[] args) {
@@ -32,6 +35,16 @@ public class ProblemSolving {
         // int arr[] = {1,2,3,4};
         // int arr1 [] = {3,1,2,4};
         // findThePrefixCommonArray(arr, arr1);
+
+        // int arr[] = {0,0,1,1,1,2,2,3,3,4};
+        // System.out.println(removeDuplicates(arr));
+
+        // int arr[] = {0,0,1,1,1,2,2,3,3,4};
+        // int arr[] = {1,2,3};
+        // System.out.println(containsDuplicate(arr));
+
+        int arr[] = {1,2,3};
+        System.out.println(Arrays.toString(twoSum(arr,3)));
     }
 
     //Q1: Given an arrayList, remove all prime numbers
@@ -151,4 +164,67 @@ public class ProblemSolving {
     //     }
     //     System.out.println(Arrays.toString(C));
     //}
+
+    //Q: Remove duplicates from Sorted Array
+    public static int removeDuplicates(int[] arr) {
+        int n = arr.length;
+        if (n == 0 || n == 1)
+            return n;
+      
+        // To store index of next unique element
+        int j = 0;
+      
+        // Doing same as done in Method 1
+        // Just maintaining another updated index i.e. j
+        for (int i = 0; i < n-1; i++)
+            if (arr[i] != arr[i+1])
+                arr[j++] = arr[i];
+      
+        arr[j++] = arr[n-1];
+      
+        return j;
+    }
+
+    //Contains Duplicate in an array
+    //Q1: Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+    public static boolean containsDuplicate(int[] nums) {
+        
+        HashMap<Integer, Integer>  map= new HashMap<>();
+        for(int i = 0; i< nums.length; i++) {
+            if(map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
+                return true;
+            } else {
+                map.put(nums[i], 1);
+            }
+        }
+        return false;
+
+        //using HashSet
+        // HashSet<Integer>  hm = new HashSet<>();
+        // for(int i = 0; i< nums.length; i++) {
+        //     if(hm.contains(nums[i])) {
+        //         return true;
+        //     } else {
+        //         hm.add(nums[i]);
+        //     }
+        // }
+        // return false;
+    }
+
+    // Two Sum
+    //Q: Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+    public static int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0 ; i<nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{i, map.get(complement)};
+            } else {
+                map.put(nums[i],i);
+            }
+        }
+        return  new int[]{};
+    }
+
 }

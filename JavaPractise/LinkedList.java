@@ -25,6 +25,7 @@ public class LinkedList {
         list1.head.next.next = new Node(3);
         list1.head.next.next.next = new Node(4);
         list1.head.next.next.next.next = new Node(5);
+        list1.head.next.next.next.next.next = new Node(6);
  
         // Creating second linked list
         // list2.head = new Node(5);
@@ -41,7 +42,9 @@ public class LinkedList {
         // findMid(list1.head);
         // FindHeadOfRev(list1.head);
 
-        rearrangeZigZag(list1.head);
+        //rearrangeZigZag(list1.head);
+        
+        removeTargetNode(list1.head, 4);
 
         
     }
@@ -156,6 +159,22 @@ public class LinkedList {
             revHead.next = temp1;
             tp = temp1;
             revHead = temp2;
+        }
+        displayUsingNode(node);
+    }
+    //Q) Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+    public static void removeTargetNode(Node node, int k) {
+        Node curr = node;
+        Node prev = null;
+        while(curr != null) {
+            if(curr.data == k) {
+                if (prev == null) { //when head node.val == val, we set curr = next
+                    curr = curr.next;
+                } else { //else we prev node'next will be current's next
+                    prev.next = curr.next;
+                }
+            } else prev = curr; // if no match found we set prev as curr and move curr to next after both the conditions check 
+            curr = curr.next;
         }
         displayUsingNode(node);
     }

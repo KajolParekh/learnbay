@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 // import java.util.Arrays;
 // import java.util.HashSet;
 import java.util.HashMap;
@@ -43,8 +42,12 @@ public class ProblemSolving {
         // int arr[] = {1,2,3};
         // System.out.println(containsDuplicate(arr));
 
-        int arr[] = {1,2,3};
-        System.out.println(Arrays.toString(twoSum(arr,3)));
+        // int arr[] = {1,2,3};
+        // System.out.println(Arrays.toString(twoSum(arr,3)));
+        
+        int arr[] = {1,0,2,4,3,5};
+        //int arr[] = {1,2,3,4,5,0};
+        maxChunks(arr);
     }
 
     //Q1: Given an arrayList, remove all prime numbers
@@ -226,5 +229,46 @@ public class ProblemSolving {
         }
         return  new int[]{};
     }
+
+    //769. Max Chunks To Make Sorted
+    // Input: arr = [1,0,2,3,4]  [0,2,1,3,4]
+    // Output: 4
+    // Explanation:
+    // We can split into two chunks, such as [1, 0], [2, 3, 4].
+    // However, splitting into [1, 0], [2], [3], [4] is the highest number of chunks possible.
+    public static void maxChunks(int[] arr) {
+        // int max = arr[0]; //setting the first element as max
+        // int chunkCount = 0;
+
+        // for(int i = 0; i < arr.length; i++) { //traversing
+        //     if (max == i) { //check if the max value and the index matches meaning if 0 is at 0th index we can create that chunk as it is at the required position
+        //         chunkCount++;
+        //         if(i+1 < arr.length) { //check if there exists next element in the array
+        //             max=arr[i+1]; //since we have got the max element as current element we need to to update our max element for next iteration
+        //         }
+        //     } else if (max < arr[i]) { //we check if our max < current
+        //         max = arr[i]; //we set max = current to update our max value
+        //         if (max == i) { //we also check after updating our max value does max = current if yes we update the chunk count
+        //             chunkCount++;
+        //         }
+        //     } else { //if max > current
+        //         if(i+1 < arr.length && max < arr[i+1]) { //then we check for next element and update our max element for next iteration
+        //             max=arr[i+1];
+        //         }
+        //     }
+        // }
+        int max = 0;
+        int chunkCount = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            max = Math.max(arr[i], max);
+            if (max == i) chunkCount++;
+        }
+        System.out.println("Total chunks : " + chunkCount);
+    }
+
+    //Q) Find the first non-repeating character from a stream of characters
+    
+
 
 }

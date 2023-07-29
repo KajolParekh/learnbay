@@ -11,13 +11,16 @@ public class StacksPrac {
         
         //System.out.println(hasredundantBrackets("(a+((b+c)))"));
         //System.out.println(hasBalancedBrackets("{[]}"));
-        minAddForBalancedStr("(a)+b)((d");
+        //minAddForBalancedStr("(a)+b)((d");
+
          //int arr1 [] = {2,5,9,3,1,12,6,8,7};
          //int arr1 [] = {11,9,8,7,6,5,4,3,2,1,10};
          //nextGreaterOnLeft(arr1);
          //int arr1 [] = {3,10,4,2,1,2,6,1,7,2,9};
          //nextGreaterOnRight(arr1);
          //nextGreaterIndexOnLeft(arr1);
+
+         decToBin(8);
     }
 // >>>>>>>>>>>>>>>>>>>>>> Redundant Brackets  <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -229,7 +232,18 @@ public class StacksPrac {
         // }
         
     }
-
-
+// >>>>>>>>>>>>>>>>>>>>>      Decimal to Binary using stacks      <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //Auxiliary Space: O(log2N)
+    //Time Complexity: O(log2N)
+    public static void decToBin(int a) {
+        //divide and store the remainder in stacks until the number is 
+        Stack <Integer> st = new Stack<>();
+        while (a > 0) {
+            int r = a % 2;
+            st.add(r);
+            a = a / 2;
+        }
+        while(!st.empty()) System.out.print(st.pop());
+    }
 
 }

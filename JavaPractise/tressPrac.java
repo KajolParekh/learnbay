@@ -130,6 +130,10 @@ public class tressPrac {
     public static int sumInBST(Node node) {
         return (node == null) ? 0 : sumInBST(node.left) + sumInBST(node.right) + node.key;
     }
+    public static int sumOfNodes(Node node) {
+        if (node == null) return 0;
+        return node.key + sumOfNodes(node.left) + sumOfNodes(node.right);
+    }
 
     public static int findAndCountInBST(Node node, int tar) {
         
@@ -144,16 +148,53 @@ public class tressPrac {
         }
     }
 
+    public static boolean hasTargetSum(Node node, int targetSum, int currSum) {
+        if (node == null) return false; //when tree is empty
+        int checkSum = currSum + node.key;
 
+        if (node.left == null && node.right == null && currSum == targetSum) return true; //when tree has no children and root node's data = target sum
+        boolean leftSum = hasTargetSum(node.left, targetSum, checkSum);
+        if (leftSum) return true;
+        boolean rightSum = hasTargetSum(node.right, targetSum, checkSum);
+        return leftSum || rightSum;
+    }
+    public static boolean hasPathSum(Node root, int targetSum) {
+        if(root == null) return false;
+        // is a leaf node with desired sum value
+        if(root.key == targetSum && root.left == null && root.right == null) return true;
+
+        return hasPathSum(root.left, targetSum - root.key) || hasPathSum(root.right, targetSum - root.key); 
+    }
+
+    public static int widthOfTree(Node node, int val, boolean leftCheck) {
+        if (node == null) return 0;
+        if (node.left == null && node.right == null) return 1;
+
+        if(leftCheck && node.left != null) {
+            val++;
+            widthOfTree(node.left, val, true);
+        } else {
+            if (node.right != null) {
+                val++;
+                widthOfTree(node.right, val, true);
+            }
+        }
+        return val; 
+    }
+
+    
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
-        tree.root = new Node(10);
-        tree.root.left = new Node(9);
-        tree.root.right = new Node(11);
-        tree.root.left.left = new Node(8);
-        tree.root.left.right = new Node(10);
-        tree.root.right.left = new Node(7);
-        tree.root.right.right = new Node(15);
+        tree.root = new Node(1);
+        tree.root.left = new Node(7);
+        tree.root.right = new Node(9);
+        tree.root.left.left = new Node(2);
+        tree.root.left.right = new Node(6);
+        tree.root.left.right.left = new Node(5);
+        tree.root.left.right.right = new Node(11);
+        //tree.root.right.left = new Node(2);
+        tree.root.right.right = new Node(9);
+        tree.root.right.right.left = new Node(5);
 
         // System.out.println("In order travsal ");
         // tree.printInorder();
@@ -180,9 +221,28 @@ public class tressPrac {
 
         // System.out.println("Found target 10 : "+ findNodeInBST(tree.root,20));
         // System.out.println("Sum of node in bST: " + sumInBST(tree.root));
-        System.out.println("Count of target in BST: " + findAndCountInBST(tree.root, 10));
+        // System.out.println("Sum: " + sumOfNodes(tree.root));
+        //System.out.println("Count of target in BST: " + findAndCountInBST(tree.root, 10));
+
+        // System.out.println("Root to leaf path " + hasTargetSum(tree.root, 21,0));
+        // System.out.println(hasPathSum(tree.root, 21));
+
+        int leftSum = widthOfTree(tree.root, 0, true);
+        int rightSum = widthOfTree(tree.root, 0, false);
+        System.out.println("Sum: "+ (leftSum +rightSum));
+
+
 
 
         
     }
 }
+
+
+//count leaf nodes in a tree
+//check if bst
+//program to identify if 2 trees are identical
+//LCA - lowest common ancestor (Frequently asked)
+//zigzag traversal 
+//left view of a binary tree
+//
